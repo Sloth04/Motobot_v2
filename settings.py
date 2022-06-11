@@ -7,6 +7,7 @@ from logging import config
 
 load_dotenv()
 
+# SECRETS
 TOKEN = os.getenv('TOKEN')
 DATABASE_NAME = os.getenv('DATABASE_NAME')
 cwd = Path.cwd()
@@ -27,3 +28,12 @@ file_handler.setFormatter(formatter)
 
 logger.addHandler(file_handler)
 logger.addHandler(stdout_handler)
+
+# TEXT OPTIONS
+startButtonText = '/start'
+helpButtonText = '/help'
+stopButtonText = '/stop'
+
+dailyReportButtonText = '/last_day_report'
+weeklyReportButtonText = '/last_week_report'
+yearlyReportButtonText = '/last_year_report'
