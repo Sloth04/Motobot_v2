@@ -2,9 +2,9 @@ from settings import *
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, ForeignKey
 from sqlalchemy.orm import relationship
-
+from sqlalchemy.dialects.sqlite import INTEGER, CHAR, DATETIME
 
 engine = create_engine(f'sqlite:///{cwd}/{DATABASE_NAME}')
 Session = sessionmaker(bind=engine)
@@ -15,9 +15,9 @@ Base = declarative_base()
 class Users(Base):
     __tablename__ = 'users'
 
-    tg_user_id = Column(Integer, primary_key=True)
-    user_nickname = Column(String)
-    user_lastname = Column(String)
+    tg_user_id = Column(INTEGER, primary_key=True)
+    user_nickname = Column(CHAR)
+    user_lastname = Column(CHAR)
     children = relationship('Data')
 
     def __init__(self, tg_user_id: int, user_nickname: str, user_lastname: str):
@@ -26,20 +26,21 @@ class Users(Base):
         self.user_lastname = user_lastname
 
     def __repr__(self):
-        info: str = f'Пользователь [Идентификатор Tg: {self.tg_user_id},' \
-                    f'Имя: {self.user_nickname}, Фамилия: {self.user_lastname}]'
+        info: str = f"Користувач [Ідентифікатор Telegram: {self.tg_user_id}," \
+                    f"Им`я: {self.user_nickname}, Прізвище: {self.user_lastname}]"
         return info
 
-    class Data(Base):
-        __tablename__ = 'motohours_data'
 
-        id = Column(Integer, primary_key=True)
-        tg_user = Column(Integer, ForeignKey('users.tg_user_id'))
-        data = Column(Integer)
-        received = Column(String)
+class Data(Base):
+    __tablename__ = 'motohours_data'
 
-        def __init__(self, tg_id: int, data: int, received: str):
-            self.tg_id = tg_id
-            self.data = data
-            self.received = received
+    id = Column(INTEGER, primary_key=True)
+    tg_user_id = Column(INTEGER, ForeignKey('users.tg_user_id'))
+    data = Column(INTEGER)
+    received = Column(INTEGER)
+
+    def __init__(self, tg_user_id: int, data: int, received: int):
+        self.tg_user_id = tg_user_id
+        self.data = data
+        self.received = received
 
