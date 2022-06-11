@@ -7,6 +7,9 @@ authors = ["chepurnyi-oo <сhepurnyi_oo@groupbwt.com>"]
 [tool.poetry.dependencies]
 python = "^3.9"
 python-dotenv = "^0.20.0"
+SQLAlchemy = "^1.4.37"
+pathlib = "^1.0.1"
+python-telegram-bot = "^13.12"
 
 [tool.poetry.dev-dependencies]
 

@@ -60,3 +60,5 @@ coverage.xml
 .scrapy
 
 .python-version
+motobot.db
+/motobot.db
