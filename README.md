@@ -9,8 +9,8 @@ Using a [Sqlite](https://www.sqlite.org/index.html) database to store all data a
 ## Authors
 All members took an active part in modernization.
 - Sasha Chepurnyi [backend and database composition]
-- Maria Demchenko [frontend and consept maker]
-- Kate Dolzhko [frontend and consept maker]
+- Maria Demchenko [backend/frontend and consept maker]
+- Kate Dolzhko [backend/frontend and consept maker]
 - Valeria Polishyk [backend]
 
 ## Installation
