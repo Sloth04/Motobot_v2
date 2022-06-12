@@ -3,7 +3,6 @@ import sys
 from dotenv import load_dotenv
 from pathlib import Path
 import logging
-from logging import config
 
 load_dotenv()
 
@@ -29,7 +28,7 @@ file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 logger.addHandler(stdout_handler)
 
-# TEXT OPTIONS
+# TEXT
 startButtonText = '/start'
 helpButtonText = '/help'
 stopButtonText = '/stop'
@@ -37,3 +36,15 @@ stopButtonText = '/stop'
 dailyReportButtonText = '/last_day_report'
 weeklyReportButtonText = '/last_week_report'
 yearlyReportButtonText = '/last_year_report'
+fullReportButtonText = '/get_full_report'
+
+start_message_text = "Привіт, тебе вітає Мотобот, для опису введіть /help"
+
+help_message_text = "Цей бот створений для того, щоб відстежувати та зберігати час у вашій локальній базі даних." \
+               "Усі дані вводити як кількість хвилин, які були витрачені на роботу." \
+               "Наприклад для того, щоб ввести годину введіть:" \
+               "60" \
+               "Бот може видавити звіти кожному учаснику, для того щоб обрати термін звітування скористуйтесь меню." \
+               "Можемо починати!)"
+
+stop_message_text = f"Вимикаюсь, щоб почати спочатку введіть {startButtonText}"
