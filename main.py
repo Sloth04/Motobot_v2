@@ -100,6 +100,8 @@ def message_is_digits(update: Update, context: CallbackContext):
         callback_text = f'Записано до бази: {update.message.text} хвилин'
         context.bot.send_message(chat_id=update.effective_chat.id, text=callback_text)
         logging.info(f'Add row with user: {tg_id}, data: {update.message.text}')
+    else:
+        context.bot.send_message(chat_id=update.effective_chat.id, text=error_enter_text)
 
 
 def last_day_report(update: Update, context: CallbackContext):
